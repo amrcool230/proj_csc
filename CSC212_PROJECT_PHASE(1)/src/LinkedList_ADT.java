@@ -231,19 +231,19 @@ public class LinkedList_ADT<T> {
             head = current = newNode;
         } else {
             current = head;
-            Node<T> previous = null;
+            Node<T> tmp = null;
 
             // Traverse the list to find the correct position to insert the event
             while (current != null && ((Event) current.data).getName().compareToIgnoreCase(event.getName()) < 0) {
-                previous = current;
+            	tmp = current;
                 current = current.next;
             }
 
-            if (previous == null) {
+            if (tmp == null) {
                 newNode.next = head;
                 head = newNode;
             } else {
-                previous.next = newNode;
+            	tmp.next = newNode;
                 newNode.next = current;
             }
         }
@@ -263,27 +263,25 @@ public class LinkedList_ADT<T> {
 	    String eventLocation = input.next();
 
 	    // Check if the event already exists in the list
-	    boolean eventExists = false;
+	    
 	    current = head;
 	    while (current != null) {
 	        if (((Event) current.data).getEvent_title().equalsIgnoreCase(eventTitle)
 	                && ((Event) current.data).getName().equalsIgnoreCase(contactName)
-	                && ((Event) current.data).getTime().equalsIgnoreCase(eventDateTime)
-	                && ((Event) current.data).getLocation().equalsIgnoreCase(eventLocation)) {
-	            eventExists = true;
+	                && !((Event) current.data).getTime().equalsIgnoreCase(eventDateTime)) {
+	            System.out.println("event already exist");
 	            break;
 	        }
 	        current = current.next;
 	    }
 
-	    if (eventExists) {
-	        System.out.println("Event already exists!");
-	    } else {
+	    
+	    
 	        Event newEvent = new Event(eventTitle, contactName, eventDateTime, eventLocation);
 	        addEvent(newEvent);
 	        System.out.println("Event successfully added!");
 	    }
-	}
+	
         
             
 	/*public void ScheduleanEvent() {
