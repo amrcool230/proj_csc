@@ -141,34 +141,50 @@ public class LinkedList_ADT<T> {
 	public boolean empty() {
 		return head == null;
 	}
-	/*
-	 * public void addContact() { Scanner kb = new Scanner(System.in);
-	 * System.out.println("Enter the Contact's Name : "); String s1 = kb.next();
-	 * System.out.println("Enter the Contact's Phone number: : "); String s2 =
-	 * kb.next(); System.out.println("Enter the Contact's Email address : "); String
-	 * s3 = kb.next(); System.out.println("Enter the Contact's Address: : "); String
-	 * s4 = kb.next(); System.out.println("Enter the Contact's Birthday : "); String
-	 * s5 = kb.next(); System.out.println("Enter any notes : "); String s6 =
-	 * kb.next();
-	 * 
-	 * Contact<T> e = new Contact<T>(s1, s2, s3, s4, s5, s6); Node<T> ComparePointer
-	 * = head; // this temporairly ComparePointer is a pointer we are using it
-	 * instead of using // the current so we keep adding // after the current
-	 * 
-	 * while (ComparePointer != null) { if (((Contact)
-	 * ComparePointer.data).getAddress().equals(e.getAddress()) && ((Contact)
-	 * ComparePointer.data).getEmailAddress().equals(e.getEmailAddress()) &&
-	 * ((Contact) ComparePointer.data).getPhoneNumber().equals(e.getPhoneNumber()))
-	 * { System.out.println("This contact is already entered!"); break; }
-	 * ComparePointer = ComparePointer.next; }
-	 * 
-	 * Node<T> temp; if (empty()) current = head = new Node((Contact<T>) e);
-	 * 
-	 * temp = current.next; current.next = new Node((Contact<T>) e); current =
-	 * current.next; current.next = temp;
-	 * 
-	 * System.out.println("contact successuflly added!!"); }
-	 **/
+/*
+	public void addContact() {
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Enter the Contact's Name : ");
+		String s1 = kb.next();
+		System.out.println("Enter the Contact's Phone number: : ");
+		String s2 = kb.next();
+		System.out.println("Enter the Contact's Email address : ");
+		String s3 = kb.next();
+		System.out.println("Enter the Contact's Address: : ");
+		String s4 = kb.next();
+		System.out.println("Enter the Contact's Birthday : ");
+		String s5 = kb.next();
+		System.out.println("Enter any notes : ");
+		String s6 = kb.next();
+
+		Contact<T> e = new Contact<T>(s1, s2, s3, s4, s5, s6);
+		Node<T> ComparePointer = head;
+		// this temporairly ComparePointer is a pointer we are using it instead of using
+		// the current so we keep adding
+		// after the current
+
+		while (ComparePointer != null) {
+			if (((Contact) ComparePointer.data).getAddress().equals(e.getAddress())
+					&& ((Contact) ComparePointer.data).getEmailAddress().equals(e.getEmailAddress())
+					&& ((Contact) ComparePointer.data).getPhoneNumber().equals(e.getPhoneNumber())) {
+				System.out.println("This contact is already entered!");
+				break;
+			}
+			ComparePointer = ComparePointer.next;
+		}
+
+		Node<T> temp;
+		if (empty())
+			current = head = new Node((Contact<T>) e);
+
+		temp = current.next;
+		current.next = new Node((Contact<T>) e);
+		current = current.next;
+		current.next = temp;
+
+		System.out.println("contact successuflly added!!");
+}**/
+	
 
 	public void deletecontact() {
 		if (current == head)
@@ -219,53 +235,54 @@ public class LinkedList_ADT<T> {
 	}
 
 	public boolean add(Event event) {
+		
+		
+		
+			Scanner kb = new Scanner(System.in);
+			System.out.println("Enter the Contact's Name : ");
+			String s1 = kb.next();
+			System.out.println("Enter the Contact's Phone number: : ");
+			String s2 = kb.next();
+			System.out.println("Enter the Contact's Email address : ");
+			String s3 = kb.next();
+			System.out.println("Enter the Contact's Address: : ");
+			String s4 = kb.next();
+			System.out.println("Enter the Contact's Birthday : ");
+			String s5 = kb.next();
+			System.out.println("Enter any notes : ");
+			String s6 = kb.next();
 
-		Scanner kb = new Scanner(System.in);
-		System.out.println("Enter the Contact's Name : ");
-		String s1 = kb.next();
-		System.out.println("Enter the Contact's Phone number: : ");
-		String s2 = kb.next();
-		System.out.println("Enter the Contact's Email address : ");
-		String s3 = kb.next();
-		System.out.println("Enter the Contact's Address: : ");
-		String s4 = kb.next();
-		System.out.println("Enter the Contact's Birthday : ");
-		String s5 = kb.next();
-		System.out.println("Enter any notes : ");
-		String s6 = kb.next();
+			Contact<T> e = new Contact<T>(s1, s2, s3, s4, s5, s6);
+			Node<T> ComparePointer = head;
+			// this temporairly ComparePointer is a pointer we are using it instead of using
+			// the current so we keep adding
+			// after the current
 
-		Contact<T> e = new Contact<T>(s1, s2, s3, s4, s5, s6);
-		Node<T> ComparePointer = head;
-		// this temporairly ComparePointer is a pointer we are using it instead of using
-		// the current so we keep adding
-		// after the current
-
-		while (ComparePointer != null) {
-			if (((Contact) ComparePointer.data).getAddress().equals(e.getAddress())
-					&& ((Contact) ComparePointer.data).getEmailAddress().equals(e.getEmailAddress())
-					&& ((Contact) ComparePointer.data).getPhoneNumber().equals(e.getPhoneNumber())) {
-				System.out.println("This contact is already entered!");
-				break;
+			while (ComparePointer != null) {
+				if (((Contact) ComparePointer.data).getAddress().equals(e.getAddress())
+						&& ((Contact) ComparePointer.data).getEmailAddress().equals(e.getEmailAddress())
+						&& ((Contact) ComparePointer.data).getPhoneNumber().equals(e.getPhoneNumber())) {
+					System.out.println("This contact is already entered!");
+					break;
+				}
+				ComparePointer = ComparePointer.next;
 			}
-			ComparePointer = ComparePointer.next;
+
+			Node<T> temp;
+			if (empty())
+				current = head = new Node((Contact<T>) e);
+
+			temp = current.next;
+			current.next = new Node((Contact<T>) e);
+			current = current.next;
+			current.next = temp;
+
+			System.out.println("contact successuflly added!!");
+
 		}
+		Node<T> newNode = new Node(event);
 
-		Node<T> temp;
-		if (empty())
-			current = head = new Node((Contact<T>) e);
-
-		temp = current.next;
-		current.next = new Node((Contact<T>) e);
-		current = current.next;
-		current.next = temp;
-
-		System.out.println("contact successuflly added!!");
-
-	}
-
-	Node<T> newNode = new Node(event);
-
-	if(empty()) {
+		if (empty()) {
 			head = current = newNode;
 		} else {
 			current = head;
