@@ -28,7 +28,13 @@ public class Event {
 	}
 
 	
-	
+	public void display() {
+		//System.out.println("contact found");
+		System.out.println("Name: "+name);
+		System.out.println("PhoneNumber: "+date);
+		System.out.println("address: "+title);
+		System.out.println("birthday: "+location);
+	}
 
 	
 

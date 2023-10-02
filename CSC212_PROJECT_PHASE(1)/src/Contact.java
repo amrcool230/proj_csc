@@ -25,7 +25,7 @@ public class Contact<T> implements Comparable<T> {
 	
 
 	public void display() {
-		//System.out.println("contact found");
+		System.out.println("contact found");
 		System.out.println("Name: "+name);
 		System.out.println("EmailAddress "+emailAddress);
 		System.out.println("PhoneNumber: "+PhoneNumber);
