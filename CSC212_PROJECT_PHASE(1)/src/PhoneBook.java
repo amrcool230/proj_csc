@@ -8,7 +8,7 @@ public class PhoneBook {
 	
 	
 	
-	
+
 	
 	
 	
@@ -44,7 +44,7 @@ public class PhoneBook {
 		LinkedList_ADT e1 = new  LinkedList_ADT();
 		Scanner kb = new Scanner(System.in);
 		boolean x= true;
-		
+		System.out.println();
 		
 		while (x) { 
 			System.out.println("Welcome to the Linked Tree Phonebook!\r\n"

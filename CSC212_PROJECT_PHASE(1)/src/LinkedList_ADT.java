@@ -141,68 +141,70 @@ public class LinkedList_ADT<T> {
 	public boolean empty() {
 		return head == null;
 	}
-/*
-	public void addContact() {
-		Scanner kb = new Scanner(System.in);
-		System.out.println("Enter the Contact's Name : ");
-		String s1 = kb.next();
-		System.out.println("Enter the Contact's Phone number: : ");
-		String s2 = kb.next();
-		System.out.println("Enter the Contact's Email address : ");
-		String s3 = kb.next();
-		System.out.println("Enter the Contact's Address: : ");
-		String s4 = kb.next();
-		System.out.println("Enter the Contact's Birthday : ");
-		String s5 = kb.next();
-		System.out.println("Enter any notes : ");
-		String s6 = kb.next();
+	/*
+	 * public void addContact() { Scanner kb = new Scanner(System.in);
+	 * System.out.println("Enter the Contact's Name : "); String s1 = kb.next();
+	 * System.out.println("Enter the Contact's Phone number: : "); String s2 =
+	 * kb.next(); System.out.println("Enter the Contact's Email address : "); String
+	 * s3 = kb.next(); System.out.println("Enter the Contact's Address: : "); String
+	 * s4 = kb.next(); System.out.println("Enter the Contact's Birthday : "); String
+	 * s5 = kb.next(); System.out.println("Enter any notes : "); String s6 =
+	 * kb.next();
+	 * 
+	 * Contact<T> e = new Contact<T>(s1, s2, s3, s4, s5, s6); Node<T> ComparePointer
+	 * = head; // this temporairly ComparePointer is a pointer we are using it
+	 * instead of using // the current so we keep adding // after the current
+	 * 
+	 * while (ComparePointer != null) { if (((Contact)
+	 * ComparePointer.data).getAddress().equals(e.getAddress()) && ((Contact)
+	 * ComparePointer.data).getEmailAddress().equals(e.getEmailAddress()) &&
+	 * ((Contact) ComparePointer.data).getPhoneNumber().equals(e.getPhoneNumber()))
+	 * { System.out.println("This contact is already entered!"); break; }
+	 * ComparePointer = ComparePointer.next; }
+	 * 
+	 * Node<T> temp; if (empty()) current = head = new Node((Contact<T>) e);
+	 * 
+	 * temp = current.next; current.next = new Node((Contact<T>) e); current =
+	 * current.next; current.next = temp;
+	 * 
+	 * System.out.println("contact successuflly added!!"); }
+	 **/
 
-		Contact<T> e = new Contact<T>(s1, s2, s3, s4, s5, s6);
-		Node<T> ComparePointer = head;
-		// this temporairly ComparePointer is a pointer we are using it instead of using
-		// the current so we keep adding
-		// after the current
-
-		while (ComparePointer != null) {
-			if (((Contact) ComparePointer.data).getAddress().equals(e.getAddress())
-					&& ((Contact) ComparePointer.data).getEmailAddress().equals(e.getEmailAddress())
-					&& ((Contact) ComparePointer.data).getPhoneNumber().equals(e.getPhoneNumber())) {
-				System.out.println("This contact is already entered!");
-				break;
-			}
-			ComparePointer = ComparePointer.next;
-		}
-
-		Node<T> temp;
-		if (empty())
-			current = head = new Node((Contact<T>) e);
-
-		temp = current.next;
-		current.next = new Node((Contact<T>) e);
-		current = current.next;
-		current.next = temp;
-
-		System.out.println("contact successuflly added!!");
-}**/
+	public void delete(T t) {
+		if (empty()) {
+			System.out.println("The list is empty!");
+			return;}
+		
+			
 	
-
-	public void deletecontact() {
-		if (current == head)
-			head = head.next;
+		
 		else {
-			Node<T> tmp = head;
-
-			while (tmp.next != current)
-				tmp = tmp.next;
-
-			tmp.next = current.next;
-		}
-
-		if (current.next == null)
-			current = head;
-		else
-			current = current.next;
-	}
+			
+		 if (t instanceof Contact) { 
+			 
+			 Node<Contact> current=head ; 
+			 
+			 while(current!=null) {
+		if (current.next.data.equals(t)) {
+			current = current.next.next;
+			System.out.println("Contact deleted.");}
+		else if (current.next==null) {
+			System.out.println("Contact not found!");}
+			 }
+	
+		 }else  {
+			 Node<Event> current=head;
+			 while(current!=null) {
+					if (current.next.data.equals(t)) {
+						current = current.next.next;
+						System.out.println("Event deleted.");}
+					else if (current.next==null) {
+						System.out.println("Event not found!");}
+			 
+		 }
+	
+		
+		 }}}
 
 	/*
 	 * public void ScheduleanEvent() {
@@ -234,10 +236,9 @@ public class LinkedList_ADT<T> {
 
 	}
 
-	public boolean add(Event event) {
-		
-		
-		
+	public boolean add(T t) {
+		if (t instanceof Contact) {
+
 			Scanner kb = new Scanner(System.in);
 			System.out.println("Enter the Contact's Name : ");
 			String s1 = kb.next();
@@ -269,80 +270,80 @@ public class LinkedList_ADT<T> {
 			}
 
 			Node<T> temp;
+
 			if (empty())
 				current = head = new Node((Contact<T>) e);
-
-			temp = current.next;
-			current.next = new Node((Contact<T>) e);
-			current = current.next;
-			current.next = temp;
-
-			System.out.println("contact successuflly added!!");
-
-		}
-		Node<T> newNode = new Node(event);
-
-		if (empty()) {
-			head = current = newNode;
-		} else {
-			current = head;
-			Node<T> tmp = null;
-
-			// Traverse the list to find the correct position to insert the event , but
-			// first we need to check if the event is existed
-			if (isConflict(event.getTime())) {
-				System.out.println("event is already exist !!!");
-				return false;
-			}
-
-			while (current != null && ((Event) current.data).getName().compareToIgnoreCase(event.getName()) < 0) {
-				tmp = current;
+			else {
+				temp = current.next;
+				current.next = new Node((Contact<T>) e);
 				current = current.next;
-			}
+				current.next = temp;
 
-			if (tmp == null) {
-				newNode.next = head;
-				head = newNode;
+				System.out.println("contact successuflly added!!");
+				return true;
+			}
+		} else {
+			Node<T> newNode = new Node(t);
+
+			if (empty()) {
+				head = current = newNode;
 			} else {
-				tmp.next = newNode;
-				newNode.next = current;
-			}
-		}
+				current = head;
+				Node<T> tmp = null;
 
-		return true;
+				// Traverse the list to find the correct position to insert the event , but
+				// first we need to check if the event is existed
+				if (isConflict(((Event) t).getTime())) {
+					System.out.println("event is already exist !!!");
+					return false;
+				}
+
+				while (current != null
+						&& ((Event) current.data).getName().compareToIgnoreCase(((Event) t).getName()) < 0) {
+					tmp = current;
+					current = current.next;
+				}
+
+				if (tmp == null) {
+					newNode.next = head;
+					head = newNode;
+				} else {
+					tmp.next = newNode;
+					newNode.next = current;
+				}
+			}
+
+			return true;
+		}
+		return false;
 	}
 
-	public void ScheduleanEvent() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter event title: ");
-		String eventTitle = input.next();
-		System.out.println("Enter contact name: ");
-		String contactName = input.next();
-		System.out.println("Enter event date and time (MM/DD/YYYY HH:MM): ");
-		String eventDateTime = input.next();
-		System.out.println("Enter event location: ");
-		String eventLocation = input.next();
+	// public void ScheduleanEvent() {
+//	Scanner input = new Scanner(System.in);
+//	System.out.println("Enter event title: ");
+////	String eventTitle = input.next();
+//	System.out.println("Enter contact name: ");
+//	String contactName = input.next();
+//	System.out.println("Enter event date and time (MM/DD/YYYY HH:MM): ");
+//	String eventDateTime = input.next();
+//	System.out.println("Enter event location: ");
+//	String eventLocation = input.next();
 
-		// Check if the event already exists in the list
-
-		current = head;
-		while (current != null) {
-			if (((Event) current.data).getEvent_title().equalsIgnoreCase(eventTitle)
-					&& ((Event) current.data).getName().equalsIgnoreCase(contactName)
-					&& !((Event) current.data).getTime().equalsIgnoreCase(eventDateTime)) {
-				System.out.println("event already exist");
-				break;
-			}
-			current = current.next;
-		}
-
-		Event newEvent = new Event(eventTitle, contactName, eventDateTime, eventLocation);
-		add(newEvent);
-		System.out.println("Event successfully added!");
-	}
+	// Check if the event already exists in the list
 
 	/*
-	 * public void ScheduleanEvent() { Node<Event> list = new Node<>(); list = head;
+	 * current = head; while (current != null) { if (((Event)
+	 * current.data).getEvent_title().equalsIgnoreCase(eventTitle) && ((Event)
+	 * current.data).getName().equalsIgnoreCase(contactName) && !((Event)
+	 * current.data).getTime().equalsIgnoreCase(eventDateTime)) {
+	 * System.out.println("event already exist"); break; } current = current.next; }
+	 * 
+	 * //Event newEvent = new Event(eventTitle, contactName, eventDateTime,
+	 * eventLocation); add(newEvent);
+	 * System.out.println("Event successfully added!"); }
+	 * 
+	 * /* public void ScheduleanEvent() { Node<Event> list = new Node<>(); list =
+	 * head;
 	 * 
 	 * 
 	 * Scanner input = new Scanner(System.in);
@@ -362,10 +363,11 @@ public class LinkedList_ADT<T> {
 	 * 
 	 * }
 	 **/
-	public void printEventDetails() {
-		LinkedList_ADT<Event> list = new LinkedList_ADT<Event>();
+	public void printEventDetails(T t) {
+		Node<Event> currnet=head;
 
 		while (current != null) {
+			if (currnet.data.getName().equalsIgnoreCase(((Event)t).getName()))
 			((Event) (current.data)).display();
 			findnext();
 		}

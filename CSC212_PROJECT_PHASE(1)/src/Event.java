@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Event {
+public class Event<T> {
 	
 	private String location,date,title,name;
 	public Event(String title,String name,String date,String location) {
