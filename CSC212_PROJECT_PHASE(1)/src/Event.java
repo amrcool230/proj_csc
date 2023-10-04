@@ -2,10 +2,11 @@ import java.util.Scanner;
 
 public class Event<T> {
 	
-	private String location,date,title,name;
+	private String location,date,title,nameE;
+	
 	public Event(String title,String name,String date,String location) {
 		
-		this.name=name;
+		this.nameE=name;
 		this.date=date;
 		this.title=title;
 		this.location=location;
@@ -16,7 +17,7 @@ public class Event<T> {
 	}
 
 	public String getName() {
-		return name;
+		return nameE;
 	}
 
 	public String getTime() {

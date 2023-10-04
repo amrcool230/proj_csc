@@ -8,7 +8,7 @@ public class PhoneBook {
 	
 	
 	
-
+	
 	
 	
 	
@@ -44,7 +44,7 @@ public class PhoneBook {
 		LinkedList_ADT e1 = new  LinkedList_ADT();
 		Scanner kb = new Scanner(System.in);
 		boolean x= true;
-		System.out.println();
+		
 		
 		while (x) { 
 			System.out.println("Welcome to the Linked Tree Phonebook!\r\n"
@@ -57,11 +57,28 @@ public class PhoneBook {
 								+ "6. Print contacts by first name\r\n"
 								+ "7. Print all events alphabetically\r\n"
 								+ "8. Exit");
-			int u = kb.nextInt();
 			System.out.println("Enter your choice : ");
+			int u = kb.nextInt();
+			
 			if(u==1) {
+				System.out.println("Enter the Contact's Name : ");
+				String s1 = kb.next();
+				System.out.println("Enter the Contact's Phone number: : ");
+				int s2 = kb.nextInt();
+				System.out.println("Enter the Contact's Email address : ");
+				String s3 = kb.next();
+				System.out.println("Enter the Contact's Address: : ");
+				String s4 = kb.next();
+				System.out.println("Enter the Contact's Birthday : ");
+				String s5 = kb.next();
+				System.out.println("Enter any notes : ");
+				String s6 = kb.next();
+				Contact c1=new Contact(s1,s2,s3,s4,s5,s6);
+				e1.add(c1);
 				
-				e1.addContact();
+				
+				
+				
 	
 			}
 				
@@ -84,7 +101,8 @@ public class PhoneBook {
 					break;
 				case 2 : 
 					System.out.println("Enter contact's PhoneNumber");
-					e1.SearchbyPhone(kb.next());
+					int ss=kb.nextInt();
+					e1.SearchbyPhone(ss);
 					break;
 				case 3 : 
 					System.out.println("Enter contact's Email address");
@@ -102,21 +120,68 @@ public class PhoneBook {
 				} 
 			}				
 			else if(u==3) { 
-				e1.deletecontact();
+				System.out.println("Choose how to delete:");
+				System.out.println("1-By Name:");
+				System.out.println("2-By PhoneNumber:");
+			int i=kb.nextInt();
+			while(i>2 && i<1 ) {
+				System.out.println("Wrong input!");
+			}
+			if(i==1) {
+				System.out.println("Enter contact's Name:");
+			 String s=kb.next();
+				e1.delete(new Contact(s));
+			}
+			else {
+				System.out.println("Enter contact PhoneNumber:");
+				int ii=kb.nextInt();
+				
+				e1.delete(new Contact(ii));
+			}
 			}
 				
 			else if(u==4) { 
 				
+				System.out.println("Enter the Event's Title : ");
+				String s1 = kb.next();
+				System.out.println("Enter the Event's Name : ");
+				String s2 = kb.next();
+				System.out.println("Enter the Event's Date : ");
+				String s3 = kb.next();
+				System.out.println("Enter the Event's Location : : ");
+				String s4 = kb.next();
+				
+				Event e = new Event(s1,s2,s3,s4);
+				e1.add(e);
+				
 			}
 				
-			//else if(u==5)
+			else if(u==5) { 
+				System.out.println("Enter the Event's Title : ");
+				String s1 = kb.next();
+				System.out.println("Enter the Event's Name : ");
+				String s2 = kb.next();
+				System.out.println("Enter the Event's Date : ");
+				String s3 = kb.next();
+				System.out.println("Enter the Event's Location : : ");
+				String s4 = kb.next();
+				e1.printEventDetails(kb);
+			}
 				
-			//else if(u==6)
+			else if(u==6) { 
+				e1.ContactsByFirstName(kb.nextLine());
+			}
 				 
-			//else if(u==7)
+			else if(u==7) { 
+				System.out.println("GOODBYE");
+			}
 				
-			//else if(u==8)
-			//	x=false;
+			else if(u==8) {
+				System.out.println("GOODBYE");
+
+				x=false;
+			}
+			
 		}
 		
 		

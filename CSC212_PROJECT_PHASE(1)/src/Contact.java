@@ -1,22 +1,28 @@
 
 public class Contact<T> implements Comparable<T> {
-	private String name;
+	private String nameC;
 	private String emailAddress;
-	private String PhoneNumber;
+	private int PhoneNumber;
 	private String address;
 	private String birthday;
 	private String notes;
+	public Contact(String s) {
+		this.nameC=s;
+	}
+	public Contact(int i) {
+		this.PhoneNumber=i;
+	}
 
 	public Contact() { 
 		
 	}
 	
-	public Contact(String name, String emailAddress, String phoneNumber, String address, String birthday,
+	public Contact(String name, int phoneNumber, String emailAddress, String address, String birthday,
 			String notes) {
 		
-		this.name = name;
+		this.nameC = name;
 		this.emailAddress = emailAddress;
-		PhoneNumber = phoneNumber;
+		this.PhoneNumber = phoneNumber;
 		this.address = address;
 		this.birthday = birthday;
 		this.notes = notes;
@@ -26,7 +32,7 @@ public class Contact<T> implements Comparable<T> {
 
 	public void display() {
 		System.out.println("contact found");
-		System.out.println("Name: "+name);
+		System.out.println("Name: "+nameC);
 		System.out.println("EmailAddress "+emailAddress);
 		System.out.println("PhoneNumber: "+PhoneNumber);
 		System.out.println("address: "+address);
@@ -39,7 +45,7 @@ public class Contact<T> implements Comparable<T> {
 
 	public int compareTo(Contact c) {
 
-		return name.compareTo(c.name);
+		return nameC.compareTo(c.nameC);
 
 	}
 
@@ -49,19 +55,19 @@ public class Contact<T> implements Comparable<T> {
 
 	public int compareTo(String s) {
 
-		return name.compareTo(s);
+		return nameC.compareTo(s);
 
 	}
 
 	public String getName() {
-		return name;
+		return nameC;
 	}
 
 	public String getEmailAddress() {
 		return emailAddress;
 	}
 
-	public String getPhoneNumber() {
+	public int getPhoneNumber() {
 		return PhoneNumber;
 	}
 
